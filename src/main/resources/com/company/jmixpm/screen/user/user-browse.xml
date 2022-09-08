@@ -71,6 +71,7 @@
                         <action id="usersTable.showUserSubstitutions"/>
                     </actions>
                 </popupButton>
+                <button id="showIN" caption="Show IN"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">
