@@ -10,6 +10,8 @@
         <item screen="Employee.browse" caption="msg://com.company.jmixpm.screen.employee/employeeBrowse.menu"/>
         <item screen="EmployeeDetails.browse"
               caption="msg://com.company.jmixpm.screen.employeedetails/employeeDetailsBrowse.menu"/>
+        <item screen="Roadmap.browse" caption="msg://com.company.jmixpm.screen.roadmap/roadmapBrowse.menu"/>
+        <item screen="WorkloadScreen" caption="msg://com.company.jmixpm.screen.workload/workloadScreen.caption"/>
     </menu>
 
 </menu-config>

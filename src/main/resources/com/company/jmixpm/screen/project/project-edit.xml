@@ -40,9 +40,9 @@
                         <action id="entityClear" type="entity_clear"/>
                     </actions>
                 </entityPicker>
+                <textArea id="labelsField" property="labels" rows="5"/>
             </column>
         </form>
-
         <tabSheet id="tabSheet" width="100%">
             <tab id="participantsTab"
                  caption="Participants"
@@ -66,7 +66,6 @@
                     </columns>
                 </table>
             </tab>
-
             <tab id="tasksTab"
                  caption="Tasks"
                  margin="true,false,false,false"
@@ -90,10 +89,8 @@
                         <column id="project"/>
                     </columns>
                 </table>
-
             </tab>
         </tabSheet>
-
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
             <button id="closeBtn" action="windowClose"/>
