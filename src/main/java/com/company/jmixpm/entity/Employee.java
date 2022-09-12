@@ -1,9 +1,11 @@
 package com.company.jmixpm.entity;
 
+import io.jmix.core.DataManager;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 
+import javax.annotation.PostConstruct;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
@@ -75,4 +77,9 @@ public class Employee {
     public void setId(UUID id) {
         this.id = id;
     }
+
+//    @PostConstruct
+//    public void postConstruct(DataManager dataManager) {
+//        setEmployeeDetails(dataManager.create(EmployeeDetails.class));
+//    }
 }

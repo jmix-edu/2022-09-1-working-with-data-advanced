@@ -50,6 +50,7 @@
                 <column id="assignee"/>
                 <column id="startDate"/>
                 <column id="estimatedEfforts"/>
+                <column id="supposedEndDate"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
