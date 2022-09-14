@@ -7,6 +7,7 @@
                   class="com.company.jmixpm.entity.Project">
             <fetchPlan extends="_base">
                 <property name="manager" fetchPlan="_base"/>
+                <property name="owner" fetchPlan="_base"/>
             </fetchPlan>
             <loader/>
             <collection id="participantsDc" property="participants"/>
@@ -28,26 +29,22 @@
     </actions>
     <dialogMode height="600"
                 width="800"/>
-
     <layout spacing="true" expand="tabSheet">
         <form id="form" dataContainer="projectDc">
             <column width="350px">
                 <field id="nameField" property="name"/>
                 <field id="startDateField" property="startDate"/>
                 <dateField id="endDateField" property="endDate"/>
-
                 <entityPicker id="managerField" property="manager">
                     <actions>
                         <action id="entityLookup" type="entity_lookup"/>
                         <action id="entityClear" type="entity_clear"/>
                     </actions>
                 </entityPicker>
-
                 <field id="labelsField" property="labels"/>
+                <entityPicker id="ownerField" property="owner"/>
             </column>
         </form>
-
-
         <tabSheet id="tabSheet" width="100%">
             <tab id="participantsTab"
                  caption="Participants"
