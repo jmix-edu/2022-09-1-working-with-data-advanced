@@ -14,6 +14,8 @@
         <item screen="WorkloadScreen" caption="msg://com.company.jmixpm.screen.workload/workloadScreen.caption"/>
         <item screen="ProjectStats.browse" caption="msg://com.company.jmixpm.screen.projectstats/projectStatsBrowse.caption"/>
         <item screen="Customer.browse" caption="msg://com.company.jmixpm.screen.customer/customerBrowse.menu"/>
+        <item screen="CustomerSubstringSearchScreen"
+              caption="msg://com.company.jmixpm.screen.customersubstringsearch/customerSubstringSearchScreen.caption"/>
     </menu>
 
 </menu-config>

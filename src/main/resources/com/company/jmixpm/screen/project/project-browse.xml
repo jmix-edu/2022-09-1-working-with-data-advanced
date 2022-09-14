@@ -16,6 +16,19 @@
                 </query>
             </loader>
         </collection>
+        <collection id="projectsDc1"
+                    class="com.company.jmixpm.entity.Project">
+            <fetchPlan extends="_base">
+                <property name="manager" fetchPlan="_base"/>
+                <property name="owner" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="projectsDl1">
+                <query>
+                    <![CDATA[select e from Project e
+                            where function('actual_efforts', e.id) > e.totalEstimatedEfforts]]>
+                </query>
+            </loader>
+        </collection>
     </data>
     <facets>
         <dataLoadCoordinator auto="true"/>
@@ -54,6 +67,7 @@
                 <column id="labels"/>
                 <column id="totalEstimatedEfforts"/>
                 <column id="owner"/>
+                <column id="status"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"

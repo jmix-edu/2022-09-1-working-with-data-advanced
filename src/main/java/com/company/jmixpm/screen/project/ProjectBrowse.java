@@ -1,12 +1,13 @@
 package com.company.jmixpm.screen.project;
 
+import com.company.jmixpm.entity.Project;
 import com.company.jmixpm.entity.User;
 import io.jmix.core.DataManager;
 import io.jmix.core.security.CurrentAuthentication;
+import io.jmix.ui.Notifications;
 import io.jmix.ui.component.Button;
 import io.jmix.ui.model.CollectionContainer;
 import io.jmix.ui.screen.*;
-import com.company.jmixpm.entity.Project;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -16,7 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class ProjectBrowse extends StandardLookup<Project> {
     @Autowired
     private DataManager dataManager;
-
+    @Autowired
+    private Notifications notifications;
     @Autowired
     private CollectionContainer<Project> projectsDc;
     @Autowired
@@ -32,4 +34,25 @@ public class ProjectBrowse extends StandardLookup<Project> {
         Project saved = dataManager.unconstrained().save(project);
         projectsDc.getMutableItems().add(saved);
     }
+
+    @Subscribe
+    public void onAfterShow(AfterShowEvent event) {
+        Integer newProjectsCount = dataManager.loadValue(
+                        "select count(e) from Project e " +
+                                "where :session_isManager = TRUE " +
+                                "and e.status = @enum(com.company.jmixpm.entity.ProjectStatus.NEW) " +
+                                "and e.manager.id = :current_user_id",
+                        Integer.class)
+                .one();
+
+        if (newProjectsCount != 0) {
+            notifications.create()
+                    .withPosition(Notifications.Position.TOP_RIGHT)
+                    .withCaption("New project")
+                    .withDescription("Projects with NEW status: " + newProjectsCount)
+                    .show();
+        }
+    }
+
+
 }
