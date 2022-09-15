@@ -1,11 +1,9 @@
 package com.company.jmixpm.entity;
 
-import io.jmix.core.DataManager;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 
-import javax.annotation.PostConstruct;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
@@ -13,7 +11,8 @@ import java.util.UUID;
 
 @JmixEntity
 @Table(name = "EMPLOYEE", indexes = {
-        @Index(name = "IDX_EMPLOYEE_EMPLOYEE_DETAILS", columnList = "EMPLOYEE_DETAILS_ID")
+        @Index(name = "IDX_EMPLOYEE_EMPLOYEE_DETAILS", columnList = "EMPLOYEE_DETAILS_ID"),
+        @Index(name = "IDX_EMPLOYEE_USER", columnList = "USER_ID")
 })
 @Entity
 public class Employee {
@@ -37,6 +36,18 @@ public class Employee {
     @NotNull
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     private EmployeeDetails employeeDetails;
+
+    @JoinColumn(name = "USER_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public EmployeeDetails getEmployeeDetails() {
         return employeeDetails;

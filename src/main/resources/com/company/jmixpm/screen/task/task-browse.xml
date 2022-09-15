@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
         xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        xmlns:dynattr="http://jmix.io/schema/dynattr/ui"
         caption="msg://taskBrowse.caption"
         focusComponent="tasksTable">
     <data readOnly="true">
@@ -9,7 +10,7 @@
             <fetchPlan extends="_base">
                 <property name="assignee" fetchPlan="_base"/>
             </fetchPlan>
-            <loader id="tasksDl">
+            <loader id="tasksDl" dynamicAttributes="true">
                 <query>
                     <![CDATA[select e from Task_ e]]>
                 </query>
@@ -19,6 +20,7 @@
     <facets>
         <dataLoadCoordinator auto="true"/>
         <screenSettings id="settingsFacet" auto="true"/>
+        <dynattr:dynamicAttributes/>
     </facets>
     <actions>
         <action id="lookupSelectAction"
@@ -51,6 +53,7 @@
                 <column id="startDate"/>
                 <column id="estimatedEfforts"/>
                 <column id="supposedEndDate"/>
+                <column id="+taskNotesDescription"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"

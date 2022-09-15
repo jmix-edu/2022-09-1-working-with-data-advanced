@@ -8,6 +8,7 @@
                     class="com.company.jmixpm.entity.Employee">
             <fetchPlan extends="_base">
                 <property name="employeeDetails" fetchPlan="_base"/>
+                <property name="user" fetchPlan="_base"/>
             </fetchPlan>
             <loader id="employeesDl">
                 <query>

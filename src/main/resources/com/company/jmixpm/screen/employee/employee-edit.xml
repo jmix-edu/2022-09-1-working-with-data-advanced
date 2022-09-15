@@ -7,8 +7,10 @@
                   class="com.company.jmixpm.entity.Employee">
             <fetchPlan extends="_base">
                 <property name="employeeDetails" fetchPlan="_base"/>
+                <property name="user" fetchPlan="_base"/>
             </fetchPlan>
             <loader/>
+            <instance id="employeeDetailsDc" property="employeeDetails"/>
         </instance>
     </data>
     <facets>
@@ -32,10 +34,9 @@
                 <textField id="nameField" property="name"/>
                 <textField id="phoneField" property="phone"/>
                 <textField id="salaryField" property="salary"/>
-
                 <textField id="passportNumberField" property="employeeDetails.passportNumber"/>
                 <dateField id="expiryDateField" property="employeeDetails.expiryDate"/>
-
+                <entityPicker id="userField" property="user"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:dynattr="http://jmix.io/schema/dynattr/ui"
         caption="msg://taskEdit.caption"
         focusComponent="form">
     <data>
@@ -7,16 +8,15 @@
                   class="com.company.jmixpm.entity.Task">
             <fetchPlan extends="_base">
                 <property name="assignee" fetchPlan="_base"/>
-                <property name="project" fetchPlan="_instance_name">
-                    <property name="labels"/>
-                </property>
+                <property name="project" fetchPlan="_base"/>
             </fetchPlan>
-            <loader/>
+            <loader dynamicAttributes="true"/>
         </instance>
     </data>
     <facets>
         <dataLoadCoordinator auto="true"/>
         <screenSettings id="settingsFacet" auto="true"/>
+        <dynattr:dynamicAttributes/>
     </facets>
     <actions>
         <action id="windowCommitAndClose" caption="msg:///actions.Ok"
@@ -41,10 +41,16 @@
                 </entityPicker>
                 <dateField id="startDateField" property="startDate"/>
                 <textField id="estimatedEffortsField" property="estimatedEfforts"/>
-
-                <field id="labelsField" property="project.labels"/>
+                <textArea id="descriptionField" property="+taskNotesDescription"/>
             </column>
         </form>
+
+        <dynattr:dynamicAttributesPanel id="dynamicAttributesPanel"
+                                        dataContainer="taskDc"
+                                        width="AUTO"/>
+
+
+
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
             <button id="closeBtn" action="windowClose"/>

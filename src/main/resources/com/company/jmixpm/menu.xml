@@ -16,6 +16,15 @@
         <item screen="Customer.browse" caption="msg://com.company.jmixpm.screen.customer/customerBrowse.menu"/>
         <item screen="CustomerSubstringSearchScreen"
               caption="msg://com.company.jmixpm.screen.customersubstringsearch/customerSubstringSearchScreen.caption"/>
+
+        <item screen="ProgrammaticProjectBrowse"
+              caption="msg://com.company.jmixpm.screen.project/programmaticProjectBrowse.caption"/>
+    </menu>
+    <menu id="audit" caption="msg://com.company.jmixpm/menu_config.audit" insertAfter="administration">
+        <item screen="TaskEntityLogBrowse"
+              caption="msg://com.company.jmixpm.screen.taskentitylogbrowse/taskEntityLogBrowse.caption"/>
+        <item screen="ProjectSnapshotBrowse"
+              caption="msg://com.company.jmixpm.screen.projectsnapshotbrowse/projectSnapshotBrowse.caption"/>
     </menu>
 
 </menu-config>

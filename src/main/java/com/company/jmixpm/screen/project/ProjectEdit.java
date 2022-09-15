@@ -3,6 +3,7 @@ package com.company.jmixpm.screen.project;
 import com.company.jmixpm.app.ProjectService;
 import com.company.jmixpm.datatype.ProjectLabels;
 import com.company.jmixpm.screen.user.UserBrowse;
+import io.jmix.audit.snapshot.EntitySnapshotManager;
 import io.jmix.core.validation.group.UiComponentChecks;
 import io.jmix.core.validation.group.UiCrossFieldChecks;
 import io.jmix.ui.Notifications;
@@ -75,4 +76,14 @@ public class ProjectEdit extends StandardEditor<Project> {
     private void usersTableAddScreenConfigurer(Screen screen) {
         ((UserBrowse) screen).setFilterProject(getEditedEntity());
     }
+
+    @Autowired
+    private EntitySnapshotManager entitySnapshotManager;
+
+    @Subscribe
+    public void onAfterCommitChanges(AfterCommitChangesEvent event) {
+        entitySnapshotManager.createSnapshot(getEditedEntity(), getEditedEntityContainer().getFetchPlan());
+    }
+
+
 }
